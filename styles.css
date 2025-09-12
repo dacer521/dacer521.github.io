@@ -209,7 +209,7 @@ a {
   }
 
   #me {
-	background-image: url("images/image.PNG");
+	background-image: url("images/me.jpeg");
   }
   
   .card:nth-of-type(1) .card-img {
@@ -225,7 +225,7 @@ a {
   }
   
   .card:nth-of-type(4) .card-img {
-    background-image: url("images/asdf.png");
+    background-image: url("images/textEditor.png");
   }
  
 
