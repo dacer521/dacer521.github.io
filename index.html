@@ -2,104 +2,211 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>Home</title>
-    <script src = "main.js"></script>
-    <link rel = "stylesheet" href = "styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>David Manuel</title>
+    <meta name="description" content="David Manuel studies Computer Science and Systems Biology at Case Western Reserve University. Projects, experience, and research.">
 
-    <link rel="icon" type="image/x-icon" href = "images/logo.png">
-    
+    <meta property="og:title" content="David Manuel">
+    <meta property="og:description" content="CS &amp; Systems Biology at Case Western. Projects, experience, and research.">
+    <meta property="og:image" content="https://dacer521.github.io/images/logo.png">
+    <meta property="og:type" content="website">
+
+    <link rel="icon" type="image/png" href="images/logo.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Bree+Serif&display=swap">
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="main.js" defer></script>
   </head>
 
   <body>
+    <a class="skip" href="#main">Skip to content</a>
+
     <header>
-      <nav id ="navbar">
-        <div>
-            <img src="images/logo.png" class="logo" alt="Logo">
-        </div>
-        <div>
-            <button><a href="index.html">Home</a></button> 
-        </div>
-        <div>
-          <button><a target = "_blank" href = "https://docs.google.com/document/d/1zbwR9RV_vEVydwtblo-MRMlXfkb9ix3I/edit?usp=sharing&ouid=107164145780714357337&rtpof=true&sd=true">Resume</a></button>
-        </div>
-        <div>
-          <button><a target = "_blank" href = "https://www.linkedin.com/in/david-manuel-4410552a6/">Linkedin</a></button>
-        </div>
+      <nav id="navbar" aria-label="Main">
+        <a href="#top" class="logo-link"><img src="images/logo.png" class="logo" alt="David Manuel, home" width="468" height="443"></a>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="https://drive.google.com/file/d/1-bjDm8aqql50Hm2O0hhv_FTV2F6LjYih/view?usp=sharing" target="_blank" rel="noopener">Resume</a></li>
+          <li class="nav-extra"><a href="https://www.linkedin.com/in/david-manuel-4410552a6/" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
       </nav>
     </header>
 
-<section class="parallax-container">
-  <h1 id = "myname" class = "name">David Manuel's Portfolio</h1>
+    <main id="main">
+      <section class="hero" id="top">
+        <div class="hero-circle">
+          <h1>David Manuel</h1>
+        </div>
+        <p class="tagline">CS &amp; Systems Biology at Case Western. I mostly build for the web, and lately for biology too.</p>
+        <div class="hero-links">
+          <a class="btn" href="#projects">See my projects</a>
+          <a class="btn btn-quiet" href="mailto:davidluna0820@gmail.com">Email me</a>
+        </div>
+      </section>
 
-</section>
+      <section class="band" id="about">
+        <div class="wrap about">
+          <img class="headshot" src="images/me.jpeg" alt="Photo of David Manuel" width="460" height="460">
+          <div>
+            <h2>About me</h2>
+            <p>
+              I'm a first-year at Case Western Reserve University studying Computer Science and Systems Biology.
+              Before that I spent four years in Minuteman High School's Computer Science &amp; Cybersecurity program,
+              and this past summer I interned on Leidos' Cyber AI/ML team.
+            </p>
+            <p>
+              Most of what I build is Python/Flask on the back end with plain JS or React on the front.
+              Systems Biology is the other half of my degree, and Phylogen and my miRcore research are where the two start to overlap.
+            </p>
+            <ul class="facts">
+              <li>Cleveland, OH</li>
+              <li>B.S. expected May 2030</li>
+              <li>AP CS A: 5</li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
-<p> </p>
+      <section id="experience">
+        <div class="wrap">
+          <h2>Experience</h2>
+          <article class="entry">
+            <div class="entry-head">
+              <h3>Leidos <span>Cyber AI/ML Intern</span></h3>
+              <p class="when">Summer 2026 &middot; Remote</p>
+            </div>
+            <ul>
+              <li>I was a full-stack developer on a 10-person Agile team building internal LLM tools. I built a FastAPI backend on one project and a React/TypeScript frontend on another.</li>
+              <li>I developed NLP checks that catch LLM failure modes like semantic distortion and made-up numbers.</li>
+              <li>I designed a system that keeps generated documents faithful to the structure and conventions of their sources.</li>
+            </ul>
+          </article>
 
-<section class="parallax-container parallax-container2">
+          <h2 class="sub" id="research">Research</h2>
+          <article class="entry">
+            <div class="entry-head">
+              <h3>miRcore Computational Biology Program <span>University of Michigan</span></h3>
+              <p class="when">2025</p>
+            </div>
+            <ul>
+              <li>I identified SARS-CoV-2&ndash;positive samples, contributed to a Parkinson's disease analysis, and analyzed my own sequenced DNA using Bowtie2, SAMtools, and BLAST on Linux.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
 
-  <div class="card">
-    <div id="me"></div>
-    <h3>David Manuel</h3>
-    <p>
-      My name is David Manuel. I'm a 16 year old programming student at Minuteman Vocational High School. I have experience in HTML, CSS, Javascript (including WebGL, jQuery, react.js, and node.js), Python, Lua, C++, and Java.
-    </p>
-  </div>
-</section>
+      <section class="band" id="projects">
+        <div class="wrap">
+          <h2>Projects</h2>
+          <div class="projects">
 
-<p> </p>
+            <article class="card">
+              <img class="shot" src="images/bytequest.jpg" alt="ByteQuest home page with Google and Microsoft sign-in and the first three course units, each with a progress bar and locked lessons" width="1200" height="633" loading="lazy">
+              <div class="card-body">
+                <p class="stamp">SkillsUSA National Bronze &rsquo;25 &amp; &rsquo;26</p>
+                <h3>ByteQuest</h3>
+                <p class="role">Team lead &middot; Python, Flask, SQLite</p>
+                <p>
+                  A beginner Python course that three of us built and ran ourselves. I led the team to two national bronze medals,
+                  planned the curriculum and its pacing, and built full-stack features in Flask: Google/Microsoft sign-in,
+                  progress tracking, and an auto-grader that runs student code in a sandboxed subprocess with time and memory limits.
+                  I self-hosted it end to end for about 500 active users.
+                </p>
+                <p class="note">Offline for now, coming back.</p>
+                <div class="links">
+                  <a class="btn" href="https://github.com/dacer521/ByteQuest" target="_blank" rel="noopener">GitHub</a>
+                </div>
+              </div>
+            </article>
 
-<section class="parallax-container parallax-container2">
-  <div class="card">
-    <div class="card-img"></div>
-    <h3>Equaleyes</h3>
-    <p>
-    For an app competition I collaborated with a partner to make "Equaleyes"-a disability visualizer.
-    </p>
-    <button><a href = "https://github.com/dacer521/disabilityVisualizer">Link To Github</a></button>
-    <button style = "margin-top: 1rem;" "><a target = "_blank" href = "https://equaleyes.neocities.org/">Link To Website</a></button>
+            <article class="card">
+              <img class="shot" src="images/phylogen.jpg" alt="Phylogen's ocean biome: a grid of sea creatures next to a panel listing each trophic level's population and average genome" width="1200" height="593" loading="lazy">
+              <div class="card-body">
+                <p class="stamp">Senior Project 2025&ndash;26</p>
+                <h3>Phylogen</h3>
+                <p class="role">Python, Flask, DEAP</p>
+                <p>
+                  An evolution simulator. Species with heritable traits (camouflage, metabolism, defense, senses) live on a
+                  habitat grid across six biomes. A DEAP genetic algorithm handles crossover, mutation, elitism, and roulette
+                  selection, alongside fecundity, immigration, and predation.
+                </p>
+                <div class="links">
+                  <a class="btn" href="https://github.com/dacer521/phylogen" target="_blank" rel="noopener">GitHub</a>
+                </div>
+              </div>
+            </article>
 
-  </div>
-  <div class="card">
-    <div class="card-img"></div>
-    <h3>Connect Four</h3>
-    <p>
-      This is a text-based connect four game I made as a submission AP Computer Science Principles test.
-    </p>
-    <button><a href = "https://github.com/dacer521/connectFour/blob/main/connectFour.py">Link To Github</a></button>
-    <button style = "margin-top: 1rem;"><a href = "IDE/IDE.html?project=connectfour">View Code</a></button>
+            <article class="card">
+              <img class="shot" src="images/equaleyes.jpg" alt="EqualEyes with its toolbar of simulations, a side panel of color blindness filters with a strength slider, and a test color wheel" width="1200" height="674" loading="lazy">
+              <div class="card-body">
+                <p class="stamp">Congressional App Challenge</p>
+                <h3>EqualEyes</h3>
+                <p class="role">JavaScript, WebGL, Web Audio API</p>
+                <p>
+                  A browser disability simulator I built with Hazel Vail. It runs real-time WebGL filters on your webcam to show
+                  four types of color blindness and dyslexia, and routes your mic through the Web Audio API to simulate hearing
+                  loss in one ear, so people can feel what these are like instead of just reading about them.
+                </p>
+                <p class="note">Heads up: the color blindness filters don't work in Firefox because of how it handles WebGL. Use Chrome or Safari for those.</p>
+                <div class="links">
+                  <a class="btn" href="https://equaleyes.neocities.org/" target="_blank" rel="noopener">Try it</a>
+                  <a class="btn btn-quiet" href="https://github.com/dacer521/disabilityVisualizer" target="_blank" rel="noopener">GitHub</a>
+                </div>
+              </div>
+            </article>
 
-  </div>
+            <article class="card">
+              <img class="shot" src="images/texteditor.jpg" alt="The text editor with example.docx open, showing a formatting toolbar and a document with colored headings, strikethrough and a numbered list" width="1200" height="675" loading="lazy">
+              <div class="card-body">
+                <h3>Text Editor</h3>
+                <p class="role">macOS &middot; JavaScript, Electron, Quill, mammoth.js</p>
+                <p>
+                  A desktop text editor for macOS that opens, edits, and saves .txt and .docx files. Editing runs on Quill, Word documents
+                  (text, tables, and images) come in through mammoth.js, and they're written back out with html-to-docx.
+                </p>
+                <div class="links">
+                  <a class="btn" href="https://github.com/dacer521/textEditor" target="_blank" rel="noopener">GitHub</a>
+                </div>
+              </div>
+            </article>
 
+          </div>
+        </div>
+      </section>
 
-  <div class="card">   
-    <div class="card-img"></div>
-    <h3>Flask Weather App</h3>
-    <p>
-      To further my back-end knowledge, I created a python weather app utilizing flask.
-    </p>
-    <button><a href = "https://github.com/dacer521/flaskWeatherApp">Link To Github</a></button>
+      <section id="skills">
+        <div class="wrap">
+          <h2>Skills</h2>
+          <dl class="skills">
+            <dt>Languages</dt>
+            <dd>Python, TypeScript/JavaScript, Java, C++, C, C#, SQL, R, HTML/CSS</dd>
+            <dt>Frameworks</dt>
+            <dd>FastAPI, Flask, React, Node.js, Electron, PyTorch, DEAP, WebGL</dd>
+            <dt>Tools</dt>
+            <dd>Git/GitHub, Linux, Jupyter</dd>
+            <dt>Activities</dt>
+            <dd>SkillsUSA chapter officer, National Honor Society</dd>
+          </dl>
+        </div>
+      </section>
+    </main>
 
-  </div>
-  <div class="card">
-    <div class="card-img"></div>
-    <h3>Text Editor</h3>
-    <p>
-      Using javascript,  electron.js, and mammoth.js I created a macos text-editor program. It is compatible with txt and docx files.
-    </p>
-
-    <button><a target = "_blank" href = "https://github.com/dacer521/textEditor">Link to Github</a></button>
-
-  </div>
-  
-
-</section>
-
-
-<section class="buffer"></section>
-
-
-
-
+    <footer>
+      <div class="wrap">
+        <h2>Want to talk?</h2>
+        <p>The best way to reach me is email: <a href="mailto:davidluna0820@gmail.com">davidluna0820@gmail.com</a></p>
+        <ul class="footer-links">
+          <li><a href="https://github.com/dacer521" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/david-manuel-4410552a6/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://drive.google.com/file/d/1-bjDm8aqql50Hm2O0hhv_FTV2F6LjYih/view?usp=sharing" target="_blank" rel="noopener">Resume</a></li>
+        </ul>
+        <p class="small">Built by hand, no frameworks. &copy; 2026 David Manuel</p>
+      </div>
+    </footer>
   </body>
-
 </html>

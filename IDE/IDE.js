@@ -13,7 +13,7 @@ let project = params.get("project")
 const frame = document.getElementById("frame");
 
 
-if (project in links) {
+if (Object.hasOwn(links, project)) {
   frame.src = links[project];
 }
 

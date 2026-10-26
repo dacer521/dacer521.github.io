@@ -1,22 +1,19 @@
-/* #IDE-container {
+.ide {
+	display: flex;
 	justify-content: center;
-    width: 100%;
-    height: 100%;
-  } */
-  #frame {
-    position: absolute;
-    left: 50vw;
-    top: 50vh;
-    transform: translate(-50%, -50%);
-    width: 60%;
-    max-height: 50%;
+	padding: calc(var(--nav-h) + 2rem) 1.25rem 2rem;
 }
-  
 
+/* keep the paper grain off the demo itself */
+body::after {
+	display: none;
+}
 
-@media only screen and (max-device-height: 500px) {
-    
-    #frame {
-        margin-top: 3rem;
-    }
-  }
+#frame {
+	width: min(75rem, 100%);
+	height: 75vh;
+	background-color: var(--ink);
+	border: 3px solid var(--ink);
+	border-radius: 0.6rem;
+	box-shadow: 6px 6px 0 var(--ink);
+}

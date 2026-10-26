@@ -1,47 +1,38 @@
 <!DOCTYPE html>
+<!--
+  Parked: nothing links here right now.
+  Kept around as the future home for in-browser demos (e.g. physicsSim compiled to WebAssembly).
+  Load a project with IDE.html?project=<name>, see IDE.js.
+-->
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>IDE</title>
-    <script src = "IDE.js"></script>
-    <link rel = "stylesheet" href = "IDE.css">
-    <link rel = "stylesheet" href = "../styles.css">
-    <script src="https://unpkg.com/@stackblitz/sdk/bundles/sdk.umd.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    <title>Demo | David Manuel</title>
 
-    <link rel="icon" type="image/x-icon" href = "../images/logo.png">
-    
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Bree+Serif&display=swap">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="IDE.css">
+    <script src="IDE.js" defer></script>
   </head>
 
   <body>
     <header>
-      <nav id ="navbar">
-        <div>
-            <img src="../images/logo.png" class="logo" alt="Logo">
-        </div>
-        <div>
-            <button><a href="../index.html">Home</a></button> 
-        </div>
-        <div>
-          <button><a target = "_blank" href= "https://docs.google.com/document/d/1zbwR9RV_vEVydwtblo-MRMlXfkb9ix3I/edit?usp=sharing&ouid=107164145780714357337&rtpof=true&sd=true">Resume</a></button>
-        </div>
-        <div>
-          <button><a target = "_blank" href = "https://www.linkedin.com/in/david-manuel-4410552a6/">Linkedin</a></button>
-        </div>
+      <nav id="navbar" aria-label="Main">
+        <a href="../index.html" class="logo-link"><img src="../images/logo.png" class="logo" alt="David Manuel, home" width="468" height="443"></a>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../index.html#projects">Projects</a></li>
+        </ul>
       </nav>
     </header>
-    
 
-
-    <!-- <div id = "IDE-container"> -->
-
-      <iframe id = "frame" src = "" width="1200" height="800"></iframe>  
-
-
-    <!-- </div> -->
-
-
-
-
+    <main class="ide">
+      <iframe id="frame" title="Project demo"></iframe>
+    </main>
   </body>
-
 </html>

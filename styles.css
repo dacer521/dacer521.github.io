@@ -1,276 +1,541 @@
-html {
-	font-family: "Alegreya Sans", sans-serif;
-	font-weight: 400;
-	font-style: normal;
-	background-color: #244855;
-	color: white;
+/* ---------- tokens ---------- */
 
+:root {
+	--teal: #244855;
+	--teal-deep: #1b3843;
+	--ink: #041d26;
+	--red: #d21d1d;
+	--paper: #f4efe6;
+	--muted: #b9cbd0;
 
-  }
-button {
-	background-color: #d21d1d;
-	border-radius: 1rem;
-	border: #041d26 solid 10px;
-	margin-top: -5%;
+	--serif: "Bree Serif", Georgia, serif;
+	--sans: "Alegreya Sans", "Trebuchet MS", sans-serif;
+
+	--nav-h: 4.5rem;
 }
-a { 
-	color: white;
+
+/* ---------- base ---------- */
+
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+	scroll-padding-top: calc(var(--nav-h) + 1rem);
+}
+
+body {
+	margin: 0;
+	background-color: var(--teal);
+	color: var(--paper);
+	font-family: var(--sans);
+	font-size: 1.2rem;
+	line-height: 1.55;
+}
+
+/* paper grain over everything, like the old prints */
+body::after {
+	content: "";
+	position: fixed;
+	inset: 0;
+	pointer-events: none;
+	z-index: 100;
+	opacity: 0.09;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+h1, h2, h3 {
+	font-family: var(--serif);
+	font-weight: 400;
+	line-height: 1.15;
+}
+
+h2 {
+	display: flex;
+	align-items: center;
+	gap: 0.4em;
+	margin: 0 0 1.5rem;
+	font-size: clamp(2rem, 5vw, 2.75rem);
+}
+
+/* the ring from the logo, as a section marker */
+h2::before {
+	content: "";
+	flex: none;
+	width: 0.6em;
+	height: 0.6em;
+	margin-top: 0.1em;
+	border: 2px solid var(--red);
+	border-radius: 50%;
+}
+
+h3 {
+	margin: 0;
+	font-size: 1.6rem;
+}
+
+p {
+	margin: 0 0 1rem;
+	max-width: 62ch;
+}
+
+a {
+	color: var(--paper);
+	text-decoration-color: var(--red);
+	text-decoration-thickness: 2px;
+	text-underline-offset: 3px;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+:focus-visible {
+	outline: 3px dashed var(--paper);
+	outline-offset: 3px;
+}
+
+.wrap {
+	max-width: 68rem;
+	margin: 0 auto;
+	padding: 0 1.25rem;
+}
+
+main > section {
+	padding: 5rem 0;
+}
+
+.band {
+	background-color: var(--teal-deep);
+	border-top: 3px solid var(--ink);
+	border-bottom: 3px solid var(--ink);
+}
+
+.skip {
+	position: absolute;
+	left: 1rem;
+	top: -4rem;
+	z-index: 20;
+	padding: 0.5rem 1rem;
+	background: var(--paper);
+	color: var(--ink);
+}
+
+.skip:focus {
+	top: 1rem;
+}
+
+/* ---------- buttons ---------- */
+
+.btn {
+	display: inline-block;
+	padding: 0.55rem 1.4rem;
+	background-color: var(--red);
+	color: #fff;
+	font-weight: 700;
+	text-decoration: none;
+	letter-spacing: 0.02em;
+	border: 3px solid var(--ink);
+	border-radius: 1rem;
+	box-shadow: 4px 4px 0 var(--ink);
+	transition: transform 0.12s, box-shadow 0.12s;
+}
+
+.btn:hover, .btn:focus-visible {
+	transform: translate(2px, 2px);
+	box-shadow: 2px 2px 0 var(--ink);
+}
+
+.btn:active {
+	transform: translate(4px, 4px);
+	box-shadow: 0 0 0 var(--ink);
+}
+
+.btn-quiet {
+	background-color: var(--paper);
+	color: var(--ink);
+}
+
+/* ---------- nav ---------- */
+
+#navbar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 10;
+	height: var(--nav-h);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1.5rem;
+	padding: 0 1rem;
+	background-color: var(--teal);
+	border-bottom: 3px solid var(--ink);
+	transition: transform 0.3s ease-in-out;
+}
+
+#navbar.hidden {
+	transform: translateY(-100%);
 }
 
 .logo {
-	border-radius: 360rem;
+	width: 3.25rem;
+	height: 3.25rem;
+	border-radius: 50%;
+	object-fit: cover;
 }
 
-.center {
-	top: 0;
-	width: 100%;
-	display: grid;
-	place-content: center;
-	margin-top: -20rem;
+#navbar ul {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#navbar li + li::before {
+	content: "•";
+	margin: 0 0.75rem;
+	color: var(--muted);
+}
+
+#navbar ul a {
+	font-weight: 500;
+	text-decoration: none;
+}
+
+#navbar ul a:hover {
+	text-decoration: underline;
+	text-decoration-color: var(--red);
+}
+
+#navbar ul a.active {
+	text-decoration: underline;
+	text-decoration-color: var(--paper);
+	text-decoration-thickness: 3px;
+}
+
+/* ---------- hero ---------- */
+
+.hero {
+	min-height: min(100vh, 56rem);
+	min-height: min(100svh, 56rem);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 2rem;
+	padding: calc(var(--nav-h) + 2rem) 1.25rem 3rem;
 	text-align: center;
 }
-	#abMe {
-		display: table-cell;
-		vertical-align: middle;
-	}
-	
 
-	
-  #navbar {
+/* same idea as the logo: a thin circle with the name breaking through it */
+.hero-circle {
+	/* flex (not grid) so the name overflows evenly on both sides of the circle */
 	display: flex;
-  transition-duration: 2s;
-	justify-content: center; 
-	align-items: center; 
-	position: fixed;
-	transition: top 0.3s; 
-	gap: 1rem;
-		
-  }
-
-  #navbar>*>*:not(p) {
-	border: #041d26 solid 10px;
-	/* border-radius: 6rem; */
-  }
-
-  nav>div:not(div:first-child):before {
-	content: "•";
-	margin-right: 1rem;
-  }
-
-  div>p {
-	font-size:2rem;
-  }
-  
-  .logo {
-	width: 8rem;
-	height: 8rem;
-  }
-  
-  .name {
-
-
-  background-color: rgba(0, 0, 0, 0.5);
-  font-family: "Bree Serif", serif;
-  font-weight: 400;
-  font-style: normal;
-  }
-
-  
-  #navbar nav button {
-	background-color: #ff6d00;
-
-	padding: 0.66rem 0.33rem;
-  }
-  
-  #navbar nav button a {
-	color: white;
-	text-decoration: none;
-	
-  }
-  
-  #navbar nav button:hover {
-	background-color: #ff8500;
-	/* Darker shade of the button color on hover */
-  }
-
-
-:root {
-    --color: #244855;
-  }
-
-  body {
-    margin: 0;
-    font-family: Poppins, sans-serif;
-  }
- 
-
-  .parallax-container>h1{
-	font-size: 10rem;
-  }
-
-  .parallax-container>h4 {
-	font-size: 5rem;
-  }
-  .parallax-container {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-	color: white;
-    align-items: center;
-    justify-content: center;
-  
-    /*  this is where the magic happens:  */
-    background-attachment: fixed;
-    background-image: url("images/hero-image.jpg"); 
-    background-position: center;
-    background-size: cover;
-    color: white;
-    row-gap: 4rem;
-  
-    text-align: center;
-  }
-
-  
-  
-
-  .parallax-container2 {
-    flex-direction: row;
-    flex-wrap: wrap;
-	display: flex;
-
-	gap: 1.6em;
-	padding: 3rem 1rem;
+	align-items: center;
 	justify-content: center;
-    padding: 6rem 0;
-	background-image: url("https://img.goodfon.com/wallpaper/nbig/6/78/kod-dvoichnyi-kod-nuli-edinitsy-programmirovanie-binarnyi.webp");
-	gap: 1.6em;
-  }
-  
-  h1 {
-    font-size: 3rem;
-    font-weight: 700;
-	color: white;
-  }
-  
-  p {
-    max-width: 52ch;
-    padding: 1em;
-    line-height: 1.5;
-  	color: white;
-  }
-
-  h4 {
-	color: white;
-  }
-  
-  a {
-    display: inline-block;
-    padding: 1em 3.5em;
-    border-radius: 0.3em;
-    color: white;
-    font-size: 0.875rem;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    text-decoration: none;
-    text-transform: uppercase;
-  }
-  
-  h3 {
-    margin-top: 1em;
-    font-size: 1.6rem;
-    font-weight: 700;
-  }
-  
-  .card {
-    display: flex;
-    max-height: 1250px;
-	height: 33vh;
-	min-height: 800px;
-	/* font-size: 1.75rem; */
-    flex-direction: column;
-    align-items: center;
-	max-width: 500px;
-    padding-bottom: 1rem;
-    border-radius: 0.5em;
-    padding-bottom: 5rem;
-    background-color: #244855;
-    box-shadow: 0 29px 38px -15px rgb(0 0 0 / 43%);
-  }
-  
-  .card-img, #me {
-    width: 100%;
-	max-height: 650px;
-	min-height: 300px;
-    height: 50%;
-    border-radius: 0.3em;
-    background-position: center;
-    background-size: cover;
-	height: auto;
-  }
-
-  #me {
-	background-image: url("images/me.jpeg");
-  }
-  
-  .card:nth-of-type(1) .card-img {
-	background-image: url("images/equaleyes.jpeg");
+	/* sized from the name so it always breaks through the ring, like the logo */
+	font-size: clamp(2.6rem, 10vw, 5.5rem);
+	width: 5.3em;
+	aspect-ratio: 1;
+	border: 2px solid var(--paper);
+	border-radius: 50%;
 }
-  
-  .card:nth-of-type(2) .card-img {
-    background-image: url("https://upload.wikimedia.org/wikipedia/commons/1/10/Connect_Four%2C_John_Slegers.png");
-  }
-  
-  .card:nth-of-type(3) .card-img {
-    background-image: url("images/flask.jpeg");
-  }
-  
-  .card:nth-of-type(4) .card-img {
-    background-image: url("images/text.png");
-  }
- 
 
-  
-  @media only screen and (max-device-width: 1366px) {
-    .parallax-container {
-      background-attachment: scroll;
-    }
-	.card {
-	  max-height: 1200px;
-  } 
-  
-  }
-        
-  @media screen and (max-width: 600px) {
-	/* Adjust the card dimensions for mobile */
-	.card {
-	  width: 95%;
-	  max-width: 420px;
-	  /* Instead of a fixed height, let the card’s content determine the height,
-		 or use a min-height to ensure it’s big enough */
-	  min-height: 720px; 
-	  margin: 1rem auto;
-	  padding: 1rem;
+.hero-circle h1 {
+	margin: 0;
+	padding: 0 0.25em;
+	white-space: nowrap;
+	font-size: 1em;
+	background-color: var(--teal);
+}
+
+.tagline {
+	max-width: 34ch;
+	text-wrap: balance;
+	font-size: clamp(1.2rem, 2.5vw, 1.45rem);
+	color: var(--muted);
+}
+
+.hero-links {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 1rem;
+}
+
+/* ---------- about ---------- */
+
+.about {
+	display: grid;
+	grid-template-columns: minmax(12rem, 18rem) 1fr;
+	gap: 3rem;
+	align-items: center;
+}
+
+.headshot {
+	width: 100%;
+	aspect-ratio: 1;
+	object-fit: cover;
+	border-radius: 50%;
+	border: 3px solid var(--paper);
+	box-shadow: 8px 8px 0 var(--ink);
+}
+
+.facts {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem 1.5rem;
+	margin: 1.5rem 0 0;
+	padding: 0;
+	list-style: none;
+	color: var(--muted);
+	font-size: 1.05rem;
+}
+
+/* ---------- experience / research ---------- */
+
+h2.sub {
+	margin-top: 3.5rem;
+}
+
+.entry {
+	max-width: 52rem;
+	padding-left: 1.25rem;
+	border-left: 3px solid var(--red);
+}
+
+.entry-head {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: baseline;
+	gap: 0.25rem 1rem;
+}
+
+.entry h3 span {
+	display: block;
+	margin-top: 0.2rem;
+	font-family: var(--sans);
+	font-size: 1.1rem;
+	font-style: italic;
+	color: var(--muted);
+}
+
+.when {
+	margin: 0;
+	color: var(--muted);
+	font-size: 1rem;
+}
+
+.entry ul {
+	margin: 1rem 0 0;
+	padding-left: 1.2rem;
+}
+
+.entry li {
+	margin-bottom: 0.5rem;
+	max-width: 62ch;
+}
+
+/* ---------- projects ---------- */
+
+.projects {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 28rem), 1fr));
+	gap: 2.5rem;
+}
+
+.card {
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	background-color: var(--teal);
+	border: 3px solid var(--ink);
+	border-radius: 0.6rem;
+	box-shadow: 6px 6px 0 var(--ink);
+}
+
+.shot {
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	object-fit: cover;
+	border-bottom: 3px solid var(--ink);
+	background-color: var(--ink);
+}
+
+
+
+
+
+.card-body {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	padding: 1.5rem;
+}
+
+.stamp {
+	align-self: flex-start;
+	margin-bottom: 0.9rem;
+	padding: 0.15rem 0.6rem;
+	font-family: var(--serif);
+	font-size: 0.95rem;
+	border: 2px solid var(--red);
+	border-radius: 0.3rem;
+	transform: rotate(-1.5deg);
+}
+
+.card:nth-child(even) .stamp {
+	transform: rotate(1deg);
+}
+
+.role {
+	margin: 0.2rem 0 1rem;
+	color: var(--muted);
+	font-style: italic;
+}
+
+.note {
+	color: var(--muted);
+	font-size: 1rem;
+}
+
+.links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	margin-top: auto;
+	padding-top: 0.5rem;
+}
+
+/* ---------- skills ---------- */
+
+.skills {
+	display: grid;
+	grid-template-columns: 10rem 1fr;
+	gap: 0.75rem 1.5rem;
+	margin: 0;
+	max-width: 52rem;
+}
+
+.skills dt {
+	font-family: var(--serif);
+}
+
+.skills dd {
+	margin: 0;
+}
+
+/* ---------- footer ---------- */
+
+footer {
+	padding: 4rem 0 3rem;
+	background-color: var(--ink);
+	text-align: center;
+}
+
+footer p {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.footer-links {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin: 1.5rem 0;
+	padding: 0;
+	list-style: none;
+}
+
+.footer-links li + li::before {
+	content: "•";
+	margin: 0 0.75rem;
+	color: var(--muted);
+}
+
+.small {
+	color: var(--muted);
+	font-size: 0.95rem;
+}
+
+/* ---------- small screens ---------- */
+
+@media (max-width: 760px) {
+	:root {
+		--nav-h: 4rem;
 	}
-	
-	/* Set a fixed height for the images so they don’t get cut off */
-	.card-img, #me {
-	  width: 100%;
-	  height: 200px; /* or another value that fits your design */
-	  border-radius: 0.3em;
-	  background-position: center;
-	  background-size: cover;
+
+	body {
+		font-size: 1.1rem;
 	}
-	
-	/* Increase font sizes for readability */
-	h1 {
-	  font-size: 2.5rem; /* adjust as needed */
+
+	#navbar {
+		gap: 0.75rem;
 	}
-	
-	h3 {
-	  font-size: 1.6rem;
+
+	.logo {
+		width: 2.6rem;
+		height: 2.6rem;
 	}
-	
-	p {
-	  font-size: 1rem;
+
+	#navbar li + li::before {
+		margin: 0 0.4rem;
 	}
-  }
+
+	.about {
+		grid-template-columns: 1fr;
+		gap: 2rem;
+		justify-items: center;
+	}
+
+	.headshot {
+		max-width: 14rem;
+	}
+
+	.skills {
+		grid-template-columns: 1fr;
+		gap: 0.2rem;
+	}
+
+	.skills dd {
+		margin-bottom: 0.75rem;
+	}
+
+	main > section {
+		padding: 3.5rem 0;
+	}
+}
+
+@media (max-width: 460px) {
+	/* five links don't fit next to the logo on a phone; LinkedIn is in the footer too */
+	.nav-extra {
+		display: none;
+	}
+
+	#navbar ul {
+		gap: 0.25rem 0.9rem;
+		font-size: 1rem;
+	}
+
+	#navbar li + li::before {
+		display: none;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
+	.btn, #navbar {
+		transition: none;
+	}
+}
